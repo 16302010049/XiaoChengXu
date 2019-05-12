@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="container">
+<view class="themeimage">
+<image src="../icon/timg.jpg" mode="scaleToFill"></image>
+</view>
+  <view class="userchoose">
+    <button  wx:if="{{canIUse}}"
+  open-type="getUserInfo"
+  bindgetuserinfo="bindGetUserInfo"
+    id="signup">微信授权</button>
+<button id="enter"  bindtap="gotoUserInfoPage">进入小程序</button>
+  </view>
+  
+</view>

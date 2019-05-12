@@ -1,0 +1,32 @@
+<!--pages/collection/collection.wxml-->
+<view wx:for="{{student.collect}}" class = "table">
+  <view class="weui-cells__title">收藏</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">问题</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" value="{{item.question}}" disabled="true" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">答案</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" value="{{item.answer}}" disabled="true" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">笔记</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" value='{{item.note}}' bindinput='noteInput' />
+      </view>
+    </view>
+    <button class="weui-btn" type="primary" bindtap='save' data-ix="{{index}}">保存修改</button>
+    <button class="weui-btn" type="warn" bindtap='remove' data-ix="{{index}}">删除收藏</button>
+  </view>
+</view>

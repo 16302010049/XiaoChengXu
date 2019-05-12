@@ -1,0 +1,21 @@
+/**index.wxss**/
+#signup{
+  background:#1afa29;
+}
+.userchoose{
+  margin-top: 10rpx;
+  
+}
+#enter{
+  margin-top: 50rpx;
+  background:#1afa29;
+}
+.themeimage{
+ 
+  margin: 20rpx auto;
+}
+.themeimage image{
+border-radius: 50%;
+width: 300rpx;
+height:300rpx;
+}

@@ -1,0 +1,354 @@
+{
+  "courses": [
+    {
+      "id": "c909533e-cc7d-9d02-543d-8834352ce13b",
+      "title": "电子产品",
+      "subtitle": "电子产品介绍",
+      "background": "C:\\fakepath\\20180814063605_23588.jpg",
+      "introduce": "适合爱好者",
+      "teacher": "json",
+      "chapters": [
+        {
+          "chapter_name": "电脑",
+          "section": [
+            {
+              "sectionname": "惠普",
+              "QA": [
+                {
+                  "question": "惠普是哪个国家的品牌？",
+                  "answer": "美国"
+                },
+                {
+                  "question": "它的英文缩写是什么？",
+                  "answer": "HP"
+                }
+              ],
+              "singleChoice": [
+                {
+                  "question": "惠普是哪个国家的品牌",
+                  "choiceA": "中国",
+                  "choiceB": "美国",
+                  "choiceC": "德国",
+                  "choiceD": "法国",
+                  "right_choice": "B"
+                }
+              ]
+            },
+            {
+              "sectionname": "神舟",
+              "QA": [],
+              "singleChoice": []
+            },
+            {
+              "sectionname": "戴尔",
+              "QA": [],
+              "singleChoice": []
+            }
+          ]
+        },
+        {
+          "chapter_name": "手机",
+          "section": [
+            {
+              "sectionname": "华为",
+              "QA": [],
+              "singleChoice": [
+                {
+                  "question": "华为是哪个国家的？",
+                  "choiceA": "中国",
+                  "choiceB": "美国",
+                  "choiceC": "德国",
+                  "choiceD": "法国",
+                  "right_choice": "A"
+                }
+              ]
+            },
+            {
+              "sectionname": "小米",
+              "QA": [],
+              "singleChoice": []
+            },
+            {
+              "sectionname": "oppo",
+              "QA": [],
+              "singleChoice": []
+            }
+          ]
+        },
+        {
+          "chapter_name": "平板",
+          "section": [
+            {
+              "sectionname": "苹果",
+              "QA": [],
+              "singleChoice": []
+            },
+            {
+              "sectionname": "华为",
+              "QA": [],
+              "singleChoice": []
+            },
+            {
+              "sectionname": "小米",
+              "QA": [],
+              "singleChoice": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c909533e-cc7d-9d02-543d-8834352ce137",
+      "title": "数码产品",
+      "subtitle": "电子产品介绍",
+      "background": "C:\\fakepath\\20180814063605_23588.jpg",
+      "introduce": "适合爱好者",
+      "teacher": "json",
+      "chapters": [
+        {
+          "chapter_name": "电脑",
+          "section": [
+            {
+              "sectionname": "惠普",
+              "QA": [
+                {
+                  "question": "惠普是哪个国家的品牌？",
+                  "answer": "美国"
+                },
+                {
+                  "question": "它的英文缩写是什么？",
+                  "answer": "HP"
+                }
+              ],
+              "singleChoice": [
+                {
+                  "question": "惠普是哪个国家的品牌",
+                  "choiceA": "中国",
+                  "choiceB": "美国",
+                  "choiceC": "德国",
+                  "choiceD": "法国",
+                  "right_choice": "B"
+                }
+              ]
+            },
+            {
+              "sectionname": "神舟",
+              "QA": [],
+              "singleChoice": []
+            },
+            {
+              "sectionname": "戴尔",
+              "QA": [],
+              "singleChoice": []
+            }
+          ]
+        },
+        {
+          "chapter_name": "手机",
+          "section": [
+            {
+              "sectionname": "华为",
+              "QA": [
+                {
+                  "question": "华为是哪个国家的品牌？",
+                  "answer": "中国"
+                }
+              ],
+              "singleChoice": [
+                {
+                  "question": "华为是哪个国家的？",
+                  "choiceA": "中国",
+                  "choiceB": "美国",
+                  "choiceC": "德国",
+                  "choiceD": "法国",
+                  "right_choice": "A"
+                }
+              ]
+            },
+            {
+              "sectionname": "小米",
+              "QA": [],
+              "singleChoice": []
+            },
+            {
+              "sectionname": "oppo",
+              "QA": [],
+              "singleChoice": []
+            }
+          ]
+        },
+        {
+          "chapter_name": "平板",
+          "section": [
+            {
+              "sectionname": "苹果",
+              "QA": [],
+              "singleChoice": []
+            },
+            {
+              "sectionname": "华为",
+              "QA": [],
+              "singleChoice": []
+            },
+            {
+              "sectionname": "小米",
+              "QA": [],
+              "singleChoice": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "student": [
+    {
+      "id": 1,
+      "weixinname": "ffff",
+      "mailbox": "sxc@cxk.com",
+      "sex": "male",
+      "name": "sxc",
+      "studentNumber": "63248000",
+      "take_course": [
+        "c909533e-cc7d-9d02-543d-8834352ce137",
+        "c909533e-cc7d-9d02-543d-8834352ce13b"
+      ],
+      "collect": [
+        {
+          "question": "why sxc is so bad?",
+          "answer": "Because he is the emperor of JP.",
+          "note": "It is need to record."
+        }
+      ]
+    },
+    {
+      "id": "b6b7e5b2-8ac8-4a9c-88ad-c03ae3ba5f20",
+      "weixinname": "听风起尘",
+      "mailbox": "163585@qq.com",
+      "sex": "男",
+      "name": "易旭日",
+      "studentNumber": "316516",
+      "take_course": [
+        "c909533e-cc7d-9d02-543d-8834352ce13b",
+        "c909533e-cc7d-9d02-543d-8834352ce137"
+      ],
+      "collect": [
+        {
+          "question": "惠普是哪个国家的品牌？",
+          "answer": "美国",
+          "note": "方法"
+        }
+      ]
+    }
+  ],
+  "answer_record": [
+    {
+      "id": "1315-165-165",
+      "student_id": "1564-654-4654",
+      "course_id": "5164-116-4646",
+      "chapter": "cxk",
+      "section": "Who is cha",
+      "question": "Do you think of jinitaimei?",
+      "choice": "c"
+    },
+    {
+      "id": "170b1088-235f-49b0-970d-8a94a10f4a39",
+      "student_id": 1,
+      "course_id": "c909533e-cc7d-9d02-543d-8834352ce13b",
+      "chapter": "电脑",
+      "section": "惠普",
+      "question": "惠普是哪个国家的品牌",
+      "choice": "C"
+    },
+    {
+      "id": "57d39cd6-3095-41aa-87a5-d2ce2d7ef12c",
+      "student_id": 1,
+      "course_id": "c909533e-cc7d-9d02-543d-8834352ce13b",
+      "chapter": "手机",
+      "section": "华为",
+      "question": "华为是哪个国家的？",
+      "choice": "B"
+    },
+    {
+      "id": "606a3ef5-f8e5-44a2-83d0-a48494cb69c8",
+      "student_id": "b6b7e5b2-8ac8-4a9c-88ad-c03ae3ba5f20",
+      "course_id": "c909533e-cc7d-9d02-543d-8834352ce13b",
+      "chapter": "电脑",
+      "section": "惠普",
+      "question": "惠普是哪个国家的品牌",
+      "choice": "B"
+    },
+    {
+      "id": "b8262eb6-627c-4219-8d8a-049c60c69e6f",
+      "student_id": "b6b7e5b2-8ac8-4a9c-88ad-c03ae3ba5f20",
+      "course_id": "c909533e-cc7d-9d02-543d-8834352ce137",
+      "chapter": "手机",
+      "section": "华为",
+      "question": "华为是哪个国家的？",
+      "choice": "B"
+    }
+  ],
+  "teacher": [
+    {
+      "id": "d18467a2-cbce-d5f6-2282-7acb8be38b4f",
+      "name": "tp",
+      "password": "123",
+      "head": "C:\\fakepath\\20180814063605_23588.jpg",
+      "open_course": []
+    },
+    {
+      "id": "e9921bb4-a7a3-8013-7ae9-0f00a2926bbe",
+      "name": "t",
+      "password": "1",
+      "head": "C:\\fakepath\\20180814063605_23588.jpg",
+      "open_course": []
+    },
+    {
+      "id": "3412abb3-3900-8088-2e67-d2d538dad998",
+      "name": "json",
+      "password": "123",
+      "head": "C:\\fakepath\\20180814063605_23588.jpg",
+      "open_course": []
+    },
+    {
+      "id": "a2f95f1b-38af-cf1b-5a5c-09b66c7aa29b",
+      "name": "example",
+      "password": "123",
+      "head": "C:\\fakepath\\20180814063605_23588.jpg",
+      "open_course": []
+    }
+  ],
+  "course_student": [
+    {
+      "id": "123",
+      "course_id": "c909533e-cc7d-9d02-543d-8834352ce137",
+      "student_list": [
+        {
+          "student_id": "1",
+          "has_studied_section": {},
+          "progress": 0.12
+        },
+        {
+          "id": "b6b7e5b2-8ac8-4a9c-88ad-c03ae3ba5f20",
+          "has_studied_section": [],
+          "progress": 0
+        }
+      ]
+    },
+    {
+      "id": "1234",
+      "course_id": "c909533e-cc7d-9d02-543d-8834352ce13b",
+      "student_list": [
+        {
+          "id": 1,
+          "has_studied_section": [],
+          "progress": 0
+        },
+        {
+          "id": "b6b7e5b2-8ac8-4a9c-88ad-c03ae3ba5f20",
+          "has_studied_section": [],
+          "progress": 0
+        }
+      ]
+    }
+  ]
+}

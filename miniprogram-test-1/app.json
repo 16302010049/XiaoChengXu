@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/userInfo/userInfo",
+    "pages/course/course",
+    "pages/mycourse/mycourse",
+    "pages/collection/collection",
+    "pages/lessonDetail/lessonDetail",
+    "pages/dialog/dialog",
+    "pages/register/Register"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2c2c2c",
+    "navigationBarTitleText": "教学通",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#f10b2e",
+    "list": [
+      {
+        "pagePath": "pages/userInfo/userInfo",
+        "text": "我的",
+        "iconPath": "pages/icon/user.png",
+        "selectedIconPath": "pages/icon/user1.png"
+      },
+      {
+        "pagePath": "pages/collection/collection",
+        "text": "收藏",
+        "iconPath": "pages/icon/star.png",
+        "selectedIconPath": "pages/icon/star (1).png"
+      },
+      {
+        "pagePath": "pages/course/course",
+        "text": "搜索",
+        "iconPath": "pages/icon/file search.png",
+        "selectedIconPath": "pages/icon/file search1.png"
+      },
+      {
+        "pagePath": "pages/mycourse/mycourse",
+        "text": "课程",
+        "iconPath": "pages/icon/team.png",
+        "selectedIconPath": "pages/icon/team (1).png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

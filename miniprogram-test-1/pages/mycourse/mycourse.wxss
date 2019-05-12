@@ -1,0 +1,28 @@
+/* pages/mycourse/mycourse.wxss */
+.mini-btn{
+  float: right;
+}
+icon{
+    margin-right: 13px;
+}
+.icon-box{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+}
+.icon-box__ctn{
+    flex-shrink: 100;
+}
+.icon-box__title{
+    font-size: 20px;
+}
+.icon-box__desc{
+    margin-top: 6px;
+    font-size: 12px;
+    color: #888888;
+}
+.icon_sp_area {
+    margin-top: 10px;
+    text-align: left;
+}

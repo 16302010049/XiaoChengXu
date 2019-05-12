@@ -1,0 +1,58 @@
+<!--pages/course/course.wxml-->
+
+
+<view class="page__bd">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜索课程" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索</view>
+      </label>
+    </view>
+    <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+  </view>
+  <view class="weui-panel weui-panel_access" wx:for="{{search}}" wx:if="{{inputVal.length > 0}}">
+    <view class="weui-panel__bd">
+      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="https://material.angular.io/assets/img/examples/shiba2.jpg" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">{{item.title}}</view>
+          <view class="weui-media-box__desc">{{item.teacher}}</view>
+        </view>
+        <button class="weui-btn mini-btn" type="primary" size="mini" bindtap='addCourse' data-pp="{{item.id}}" wx:if="{{temp_Study[index]<0}}">进入学习</button>
+        <button class="weui-btn mini-btn" type="primary" size="mini" bindtap='' wx:if="{{temp_Study[index]>=0}}" disabled="disabled">已学习</button>
+      </navigator>
+    </view>
+  </view>
+</view>
+<view class="icon-box" wx:if="{{search.length==0&&inputVal.length>0}}">
+  <icon type="warn" size="93" color="#FFBE00"></icon>
+  <view class="icon-box__ctn">
+    <view class="icon-box__title">提示</view>
+    <view class="icon-box__desc">没有搜到相关课程</view>
+  </view>
+</view>
+<view class="weui-panel weui-panel_access" wx:for="{{lesson}}" wx:for-index="in" wx:if="{{inputVal.length == 0}}">
+  <view class="weui-panel__bd">
+    <navigator url="www.baidu.com" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+        <image class="weui-media-box__thumb" src="https://material.angular.io/assets/img/examples/shiba2.jpg" />
+      </view>
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view class="weui-media-box__title">{{item.title}}</view>
+        <view class="weui-media-box__desc">{{item.teacher}}</view>
+      </view>
+      <button class="weui-btn mini-btn" type="primary" size="mini" bindtap='addCourse' data-pp="{{item.id}}" wx:if="{{canStudy[in]>0}}">参加学习</button>
+      <button class="weui-btn mini-btn" type="primary" size="mini" wx:if="{{canStudy[in]==0}}" disabled="disabled">已学习</button>
+    </navigator>
+  </view>
+</view>
