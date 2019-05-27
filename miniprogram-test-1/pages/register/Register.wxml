@@ -1,5 +1,5 @@
 <view class='baseInfo'>
-  <image src='../../../image/titleTag.png'></image>
+  <!-- <image src='../../../image/titleTag.png'></image> -->
   <text>基本信息</text>
 </view>
  
@@ -34,7 +34,7 @@
  
  
 <view class='baseInfo'>
-  <image src='../../../image/titleTag.png'></image>
+  <!-- <image src='../../../image/titleTag.png'></image> -->
   <text>基本信息</text>
 </view>
  

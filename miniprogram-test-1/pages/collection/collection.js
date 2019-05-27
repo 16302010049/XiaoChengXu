@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    student: Object,
+    collect:[],
     note: ''
   },
 
@@ -13,17 +13,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let uid = wx.getStorageSync('userID');
+    let uid = wx.getStorageSync('uid');
     var that = this;
     wx.request({
-      url: 'http://localhost:5300/student/' + uid,
+      url: 'http://localhost:8080/course/getcollect?stu_id=' + uid,
       headers: {
         'Content-Type': 'application/json'
       },
       success: function(res) {
         console.log(res);
         that.setData({
-          student: res.data,
+          collect: res.data,
           note: ''
         })
       }
@@ -37,20 +37,20 @@ Page({
   },
 
   save(e) {
-    let uid = wx.getStorageSync('userID');
+    let uid = wx.getStorageSync('uid');
     let id = e.currentTarget.dataset['ix'];
-    this.data.student.collect[id].note = this.data.note;
+    this.data.collect[id].note = this.data.note;
     var that = this;
     wx.request({
-      url: 'http://localhost:5300/student/' + uid,
+      url: 'http://localhost:8080/course/updatecollect',
       method: 'Put',
-      data: that.data.student,
+      data: that.data.collect[id],
       headers: {
         'Content-Type': 'application/json'
       },
       success: function(res) {
         that.setData({
-          student: that.data.student
+          collect: that.data.collect
         })
         wx.showModal({
           content: '修改成功',
@@ -66,20 +66,20 @@ Page({
   },
 
   remove(e) {
-    let uid = wx.getStorageSync('userID');
+   // let uid = wx.getStorageSync('userID');
     let id = e.currentTarget.dataset['ix'];
-    this.data.student.collect.splice(id, 1);
+   
     var that = this;
     wx.request({
-      url: 'http://localhost:5300/student/' + uid,
-      method: 'Put',
-      data: that.data.student,
+      url: 'http://localhost:8080/course/deletecollect?id='+that.data.collect[id].id,
+      method: 'Delete',
       headers: {
         'Content-Type': 'application/json'
       },
       success: function(res) {
+        that.data.collect.splice(id, 1);
         that.setData({
-          student: that.data.student,
+          collect: that.data.collect
         })
         wx.showModal({
           content: '删除成功',

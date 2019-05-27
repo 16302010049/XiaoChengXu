@@ -12,7 +12,6 @@ Page({
     inStudy: [],
     canStudy: [],
     temp_Study: [],
-    Student: [],
     course_student: []
   },
   showInput: function() {
@@ -52,75 +51,102 @@ Page({
   },
 
   addCourse(e) {
-    let id = e.currentTarget.dataset['pp'];
+   var id = e.currentTarget.dataset.pp;
+    console.log(id)
     var that = this;
-    let uid = wx.getStorageSync('userID');
+    let uid = wx.getStorageSync('uid');
+    var temp = {
+      id:1,
+      course_id:id,
+      student_id:uid,
+      progress:0,
+      studysection:''
+    }
     wx.request({
-      url: 'http://localhost:5300/student/'+uid,
-      headers: {
+      url:'http://localhost:8080/course/addcourse',
+      method:'post',
+      data:temp,
+      headers:{
         'Content-Type': 'application/json'
       },
-      success: function(res) {
-        console.log(res);
-        that.setData({
-          Student: res.data
-        })
-        that.data.Student.take_course.push(id);
-        wx.request({
-          url: 'http://localhost:5300/student/'+uid,
-          method: 'Put',
-          data: that.data.Student,
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          success: function(res) {
-            wx.request({
-              url: 'http://localhost:5300/course_student?course_id='+id,
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              success: function(res) {
-                console.log(res);
-                that.setData({
-                  course_student: res.data[0]
-                })
-                var temp ={
-                  id:"1",
-                  has_studied_section:[],
-                  progress:0
-                }
-                temp.id = that.data.Student.id;
-                temp.has_studied_section = [];
-                temp.progress = 0;
-                that.data.course_student.student_list.push(temp);
-                wx.request({
-                  url: 'http://localhost:5300/course_student/' + that.data.course_student.id,
-                  method: 'Put',
-                  data: that.data.course_student,
-                  headers: {
-                    'Content-Type': 'application/json'
-                  },
-                  success: function(res) {
-                    that.setData({
-                      inputShowed: false,
-                      inputVal: "",
-                      lesson: [],
-                      search: [],
-                      inStudy: [],
-                      canStudy: [],
-                      temp_Study: [],
-                      Student: [],
-                      course_student: []
-                    })
-                    that.onLoad();
-                  }
-                })
-              }
+      success:function(res){
+        for(let i=0;i<that.data.lesson.length;i++){
+          if(that.data.lesson[i].id==id){
+            that.data.canStudy[i]=0;
+            that.setData({
+              canStudy:that.data.canStudy
             })
+            console.log('ooo')
+            break;
           }
-        })
+        }
+
       }
     })
+
+
+                // temp.id = that.data.Student.id;
+                // temp.has_studied_section = [];
+                // temp.progress = 0;
+                // that.data.course_student.student_list.push(temp);
+    // wx.request({
+    //   url: 'http://localhost:5300/student/'+uid,
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   success: function(res) {
+    //     console.log(res);
+    //     that.setData({
+    //       Student: res.data
+    //     })
+    //     that.data.Student.take_course.push(id);
+    //     wx.request({
+    //       url: 'http://localhost:5300/student/'+uid,
+    //       method: 'Put',
+    //       data: that.data.Student,
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       },
+    //       success: function(res) {
+    //         wx.request({
+    //           url: 'http://localhost:5300/course_student?course_id='+id,
+    //           headers: {
+    //             'Content-Type': 'application/json'
+    //           },
+    //           success: function(res) {
+    //             console.log(res);
+    //             that.setData({
+    //               course_student: res.data[0]
+    //             })
+    //            
+    //             wx.request({
+    //               url: 'http://localhost:5300/course_student/' + that.data.course_student.id,
+    //               method: 'Put',
+    //               data: that.data.course_student,
+    //               headers: {
+    //                 'Content-Type': 'application/json'
+    //               },
+    //               success: function(res) {
+    //                 that.setData({
+    //                   inputShowed: false,
+    //                   inputVal: "",
+    //                   lesson: [],
+    //                   search: [],
+    //                   inStudy: [],
+    //                   canStudy: [],
+    //                   temp_Study: [],
+    //                   Student: [],
+    //                   course_student: []
+    //                 })
+    //                 that.onLoad();
+    //               }
+    //             })
+    //           }
+    //         })
+    //       }
+    //     })
+    //   }
+    // })
   },
 
   
@@ -132,7 +158,7 @@ Page({
     //把this对象复制到临时变量that
     var that = this;
     wx.request({
-      url: 'http://localhost:5300/courses',
+      url: 'http://localhost:8080/course/getallcourses',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -141,28 +167,35 @@ Page({
         that.setData({
           lesson: res.data
         })
-        let uid = wx.getStorageSync('userID');
+        //let uid = wx.getStorageSync('userID');
         wx.request({
-          url: 'http://localhost:5300/student/'+uid,
+          url: 'http://localhost:8080/course/getcoursebyid?id='+wx.getStorageSync('uid'),
           headers: {
             'Content-Type': 'application/json'
           },
           success: function(res) {
+            console.log(res.data)
             that.setData({
-              inStudy: res.data.take_course
+              inStudy: res.data
+              
             })
             for (var i = 0; i < that.data.lesson.length; i++) {
-              if (that.data.inStudy.indexOf(that.data.lesson[i].id) >= 0) {
-                that.data.canStudy.push(0)
-              } else {
-                that.data.canStudy.push(1)
+              let sum=0;
+              for(let j=0;j<that.data.inStudy.length;j++){
+              if (that.data.inStudy[j]==that.data.lesson[i].id) {
+                sum++
+                break;
               }
+              }
+              if(sum>0)that.data.canStudy.push(0)
+              else that.data.canStudy.push(1)
             }
+            
             that.setData({
               canStudy: that.data.canStudy
             });
             console.log(that.data.canStudy);
-            console.log(that.data.inStudy.indexOf('ddd'));
+           // console.log(that.data.inStudy.indexOf('ddd'));
           }
         })
       }

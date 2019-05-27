@@ -45,7 +45,8 @@ Page({
     ChaIndex: 0,
     SecIndex: 0,
     QAIndex: 0,
-    SingleIndex: 0
+    SingleIndex: 0,
+    update:0
   },
 
   /**
@@ -56,7 +57,15 @@ Page({
     this.setData({
       cusHeadIcon: app.globalData.userInfo.avatarUrl,
     });
-    var that = this;
+     var that = this;
+    // for (let i = 0; i < lesson.chapters.length; i++) {
+    //   for(let j=0;j<lesson.chapters[i].section.length;j++){
+    //     that.data.sumsection++
+    //   }
+    // }
+    // that.setData({
+    //   sumsection:that.data.sumsection
+    // })
     wx.getStorage({
       key: 'lesson',
       success: function(res) {
@@ -165,17 +174,17 @@ Page({
   },
 
   addContent(e) {
-    if (this.data.QAIndex < this.data.lesson.chapters[this.data.ChaIndex].section[this.data.SecIndex].QA.length) {
+    if (this.data.QAIndex < this.data.lesson.chapters[this.data.ChaIndex].section[this.data.SecIndex].question.length) {
       msgList.push({
         speaker: 'server',
         contentType: 'text',
-        content: this.data.lesson.chapters[this.data.ChaIndex].section[this.data.SecIndex].QA[this.data.QAIndex].question,
+        content: this.data.lesson.chapters[this.data.ChaIndex].section[this.data.SecIndex].question[this.data.QAIndex].question,
         canShou:true
       })
       msgList.push({
         speaker: 'costomer',
         contentType: 'text',
-        content: this.data.lesson.chapters[this.data.ChaIndex].section[this.data.SecIndex].QA[this.data.QAIndex].answer
+        content: this.data.lesson.chapters[this.data.ChaIndex].section[this.data.SecIndex].question[this.data.QAIndex].answer
       })
       this.data.QAIndex++;
       this.setData({
@@ -236,12 +245,32 @@ Page({
         msgList,
         hasListAll: true
       });
+      if(this.data.update==0){
+        this.updatepro()
+        this.data.update++
+      }
     }
   },
 
   /**
    * 发送点击监听
    */
+  updatepro:function(){
+    var updatepro = {
+      course_id: this.data.lesson.id,
+      student_id: wx.getStorageSync('uid'),
+      section: this.data.lesson.chapters[this.data.ChaIndex].section[this.data.SecIndex].sectionname
+    }
+    console.log(updatepro)
+    wx.request({
+      url: 'http://localhost:8080/course/updatepro',
+      method: "put",
+      data: updatepro,
+      headers: {
+        'Content-Type': 'json'
+      }
+    })
+  },
   sendClick: function(e) {
     msgList.push({
       speaker: 'customer',
@@ -254,11 +283,11 @@ Page({
       inputVal
     });
     if (!this.data.hasDoAll) {
-      let uid = wx.getStorageSync('userID');
+      let uid = wx.getStorageSync('uid');
       var choice = ['A', 'B', 'C', 'D'];
       if (choice.indexOf(e.detail.value) >= 0) {
         var record = {
-          id:this.uuid(),
+          id:1,
           student_id: uid,
           course_id: this.data.lesson.id,
           chapter: this.data.lesson.chapters[this.data.ChaIndex].chapter_name,
@@ -267,7 +296,7 @@ Page({
           choice: e.detail.value
         }
         wx.request({
-          url: 'http://localhost:5300/answer_record',
+          url: 'http://localhost:8080/course/addanswerrecord',
           method: 'Post',
           data: record,
           headers: {
@@ -288,6 +317,10 @@ Page({
             msgList,
             hasDoAll: true
           });
+          if (this.data.update == 0) {
+            this.updatepro()
+            this.data.update++
+          }
         }
         this.setData({
           SingleIndex: this.data.SingleIndex,
@@ -308,25 +341,27 @@ Page({
 
   addShou(e){
     let id = e.currentTarget.dataset['index'];
-    let uid = wx.getStorageSync('userID');
-    var stu;
-    wx.request({
-      url: 'http://localhost:5300/student/' + uid,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        stu = res.data;
+    let uid = wx.getStorageSync('uid');
+    // var stu;
+    // wx.request({
+    //   url: 'http://localhost:5300/student/' + uid,
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   success: function (res) {
+    //     stu = res.data;
         var qa = {
+          id:1,
+          stu_id:uid,
           question:msgList[id].content,
           answer: msgList[id+1].content,
           note:""
         }
-        stu.collect.push(qa);
+        //stu.collect.push(qa);
         wx.request({
-          url: 'http://localhost:5300/student/' + uid,
-          method:'Put',
-          data:stu,
+          url: 'http://localhost:8080/course/addcollection',
+          method:'Post',
+          data:qa,
           headers: {
             'Content-Type': 'application/json'
           },
@@ -342,8 +377,8 @@ Page({
             });
           }
         })
-      }
-    })
+     // }
+    //})
   },
 
   uuid: function() {

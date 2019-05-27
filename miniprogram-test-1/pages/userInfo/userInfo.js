@@ -71,12 +71,15 @@ Page({
   modalConfirm() {
     let nickname = wx.getStorageSync('username');
     var that = this;
+    that.data.userInfo.id=wx.getStorageSync('uid');
+    that.data.userInfo.signa="1";
     that.data.userInfo.mailbox = this.data.information.phone;
     that.data.userInfo.sex = this.data.userSex;
     that.data.userInfo.name = this.data.information.name;
-    that.data.userInfo.studentNumber = this.data.information.idNumber
+    that.data.userInfo.studentnumber = this.data.information.idNumber
+    console.log(that.data.userInfo.studentnumber)
     wx.request({
-      url: 'http://localhost:5300/student/' + that.data.userInfo.id,
+      url: 'http://localhost:8080/updatestuinfo' ,
       method: 'Put',
       data: that.data.userInfo,
       headers: {
@@ -99,7 +102,7 @@ Page({
     let uid = wx.getStorageSync('userID');
     var that = this;
     wx.request({
-      url: 'http://localhost:5300/student/' + uid,
+      url: 'http://localhost:8080/student?signature=' + wx.getStorageSync('openid'),
       headers: {
         'Content-Type': 'application/json'
       },

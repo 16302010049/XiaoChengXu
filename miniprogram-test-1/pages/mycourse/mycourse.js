@@ -24,32 +24,53 @@ Page({
   onLoad: function (options) {
     var lessonIds = [];
     var that = this;
-    let uid = wx.getStorageSync('userID');
+    let uid = wx.getStorageSync('uid');
     wx.request({
-      url: 'http://localhost:5300/student/'+uid,
+      url: 'http://localhost:8080/course/getcoursebyid?id='+uid,
       headers: {
         'Content-Type': 'application/json'
       },
       success: function (res) {
-        lessonIds = res.data.take_course
-        var lessons = [];
-        wx.request({
-          url: 'http://localhost:5300/courses',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          success: function (res) {
-            lessons = res.data;
-            for(var i=0;i<lessons.length;i++){
-              if(lessonIds.indexOf(lessons[i].id)>=0){
-                that.data.myLesson.push(lessons[i]);
-              }
+        lessonIds = res.data
+        console.log(lessonIds)
+       var lessons = [];
+        for(let i=0;i<lessonIds.length;i++){
+          wx.request({
+            url:'http://localhost:8080/course/getcoursebycourseid?courseid='+lessonIds[i],
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            success:function(res){
+              lessons.push(res.data)
+              console.log(res.data)
+              that.setData({
+                myLesson: lessons
+              })
             }
-            that.setData({
-              myLesson:that.data.myLesson
-            })
-          }
-        })
+          })
+        }
+        console.log(lessons)
+  
+        console.log(that.data.myLesson)
+    
+        
+        // wx.request({
+        //   url: 'http://localhost:5300/courses',
+        //   headers: {
+        //     'Content-Type': 'application/json'
+        //   },
+        //   success: function (res) {
+        //     lessons = res.data;
+        //     for(var i=0;i<lessons.length;i++){
+        //       if(lessonIds.indexOf(lessons[i].id)>=0){
+        //         that.data.myLesson.push(lessons[i]);
+        //       }
+        //     }
+        //     that.setData({
+        //       myLesson:that.data.myLesson
+        //     })
+        //   }
+        // })
       }
     })
   },

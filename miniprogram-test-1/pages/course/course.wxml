@@ -49,7 +49,7 @@
       </view>
       <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
         <view class="weui-media-box__title">{{item.title}}</view>
-        <view class="weui-media-box__desc">{{item.teacher}}</view>
+        <view class="weui-media-box__desc">{{item.teacher_id}}</view>
       </view>
       <button class="weui-btn mini-btn" type="primary" size="mini" bindtap='addCourse' data-pp="{{item.id}}" wx:if="{{canStudy[in]>0}}">参加学习</button>
       <button class="weui-btn mini-btn" type="primary" size="mini" wx:if="{{canStudy[in]==0}}" disabled="disabled">已学习</button>

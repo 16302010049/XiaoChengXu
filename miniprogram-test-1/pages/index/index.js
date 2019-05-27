@@ -15,36 +15,67 @@ Page({
     let userList = [];
     var that = this;
     wx.request({
-      url: 'http://localhost:5300/student',
+      url: 'http://localhost:8080/student?signature='+wx.getStorageSync('openid'),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'json'
       },
       success: function(res) {
-        userList = res.data;
-        var hasRegister = false;
-        for (var i = 0; i < userList.length; i++) {
-          if (userList[i].weixinname == that.data.nickName) {
-            hasRegister = true;
-            wx.setStorageSync('userID', userList[i].id );
-            break;
-          }
-        }
+       // userList = res.data;
+        var hasRegister = true;
+        if(res.data==[]) hasRegister=false;
+        // for (var i = 0; i < userList.length; i++) {
+        //   if (userList[i].signature == app.usersignature) {
+        //     hasRegister = true;
+        //     wx.setStorageSync('userID', userList[i].id );
+        //     break;
+        //   }
+        // }
+        //if(!(userList==null))hasRegister=true;
+       
+
         if (that.data.hasUserInfo) {
-          if (hasRegister) {
+        if(hasRegister){
+          console.log("res:")
+          console.log(res.data)
+          wx.setStorageSync('uid', res.data.id)
             wx.switchTab({
               url: '/pages/course/course'
             })
-          } else {
-            wx.setStorageSync('username', that.data.nickName)
-            wx.navigateTo({
-              url: '/pages/register/Register',
-            })
-          }
+        }else{
+          wx.setStorageSync('username', that.data.nickName)
+          wx.navigateTo({
+            url: '/pages/register/Register',
+          })
+        }
+           
+          
         } else {
           wx.showModal({
             title: '提示',
             content: '请先微信授权',
             success: function(res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              } else {
+                console.log('用户点击取消')
+              }
+
+            }
+          })
+        }
+      },
+      fail: function (){
+        if (that.data.hasUserInfo) {
+
+          wx.setStorageSync('username', that.data.nickName)
+          wx.navigateTo({
+            url: '/pages/register/Register',
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: '请先微信授权',
+            success: function (res) {
               if (res.confirm) {
                 console.log('用户点击确定')
               } else {

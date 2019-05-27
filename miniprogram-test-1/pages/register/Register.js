@@ -1,3 +1,4 @@
+const app=getApp()
 Page({
 
   /**
@@ -64,22 +65,29 @@ Page({
     var that = this;
     var newStudent = {
       id:this.uuid(),
-      weixinname:nickname,
+      signature:wx.getStorageSync('openid'),
       mailbox:this.data.information.phone,
       sex:this.data.userSex,
       name:this.data.information.name,
-      studentNumber:this.data.information.idNumber,
-      take_course:[],
-      collect:[]
+      studentnumber:this.data.information.idNumber
     }
     wx.request({
-      url: 'http://localhost:5300/student/',
+      url: 'http://localhost:8080/addstu',
       method: 'Post',
       data: newStudent,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'json'
       },
       success: function (res) {
+        wx.request({
+          url: 'http://localhost:8080/student?signature=' + wx.getStorageSync('openid'),
+          headers: {
+        'Content-Type': 'json'
+      },
+      success:function(res){
+        wx.setStorageSync('uid', res.data.id)
+      }
+        })
         wx.setStorageSync('userID', newStudent.id);
         wx.showToast({
           title: '提交成功',
