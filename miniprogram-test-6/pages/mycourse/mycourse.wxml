@@ -3,13 +3,14 @@
   <view class="weui-panel__bd">
     <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
       <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-        <image class="weui-media-box__thumb" src="https://material.angular.io/assets/img/examples/shiba2.jpg" />
+        <image class="weui-media-box__thumb" src="{{item.background}}" />
       </view>
       <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
         <view class="weui-media-box__title">{{item.title}}</view>
-        <view class="weui-media-box__desc">{{item.teacher_id}}</view>
+        <view class="weui-media-box__desc">{{item.teacher_name}}</view>
       </view>
-      <button class="weui-btn mini-btn" type="primary" size="mini" data-les="{{item}}" bindtap='openDetail'>进入课程</button>
+      <button class="weui-btn mini-btn" type="primary" size="mini" data-les="{{item}}" bindtap='openDetail'>进入</button>
+       <button class="weui-btn mini-btn" type="warn" size="mini" data-les="{{item}}"  data-inx="{{in}}" bindtap='delCourse'>退课</button>
     </view>
   </view>
 </view>

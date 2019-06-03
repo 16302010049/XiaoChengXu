@@ -13,21 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let uid = wx.getStorageSync('uid');
-    var that = this;
-    wx.request({
-      url: 'http://localhost:8080/course/getcollect?stu_id=' + uid,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      success: function(res) {
-        console.log(res);
-        that.setData({
-          collect: res.data,
-          note: ''
-        })
-      }
-    })
+   
   },
 
   noteInput: function(e) {
@@ -105,7 +91,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    let uid = wx.getStorageSync('uid');
+    var that = this;
+    wx.request({
+      url: 'http://localhost:8080/course/getcollect?stu_id=' + uid,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          collect: res.data,
+          note: ''
+        })
+      }
+    })
   },
 
   /**

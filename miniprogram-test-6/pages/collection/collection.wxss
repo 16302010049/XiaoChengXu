@@ -1,8 +1,7 @@
 /* pages/collection/collection.wxss */
 button{
-  width: 40%;
   float: left;
-  margin-left: 20px;
+  margin-left: 60px;
 }
 
 .table{

@@ -1,5 +1,5 @@
 /* pages/mycourse/mycourse.wxss */
- /* .mini-btn{
+  .mini-btn{
   float: right;
 }
 icon{
@@ -25,4 +25,7 @@ icon{
 .icon_sp_area {
     margin-top: 10px;
     text-align: left;
-}  */
+}  
+button{
+ margin-right: 10px;
+}

@@ -26,7 +26,7 @@
         <input class="weui-input" value='{{item.note}}' bindinput='noteInput' />
       </view>
     </view>
-    <button class="weui-btn" type="primary" bindtap='save' data-ix="{{index}}">保存修改</button>
-    <button class="weui-btn" type="warn" bindtap='remove' data-ix="{{index}}">删除收藏</button>
+    <button class="weui-btn  mini-btn" type="primary" size="mini" bindtap='save' data-ix="{{index}}">保存修改</button>
+    <button class="weui-btn  mini-btn" type="warn" size="mini" bindtap='remove' data-ix="{{index}}">删除收藏</button>
   </view>
 </view>

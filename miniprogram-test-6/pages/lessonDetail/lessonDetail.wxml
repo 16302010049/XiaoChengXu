@@ -1,0 +1,25 @@
+<view class="page">
+  <!-- 总数 -->
+  <view class="li" bindtap='changeToggle'>
+    <icon class='./iconfont/icongallery-view:before'></icon>
+    <view class="left">{{lesson.title}}</view>
+  </view>
+
+  <block wx:for="{{list}}" wx:for-item="item" wx:for-index="index">
+    <view class="li" data-index="{{index}}" bindtap='changeToggle'>
+      <view class="left">{{item.name}}</view>
+      <view class="right">
+        <icon wx:if="{{!selectedFlag[index]}}" class='./iconfont/icondown-circle:before'></icon>
+        <icon wx:if="{{selectedFlag[index]}}" class='./iconfont/iconup-circle:before'></icon>
+      </view>
+    </view>
+    <view hidden="{{!selectedFlag[index]}}">
+      <block>
+        <view class="li " wx:for="{{item.options}}" wx:for-item="opt" wx:for-index="inx">
+          <view style="color:{{opt.hasStudy>0?'green':'black'}}">{{opt.name}}</view>
+          <icon class='./iconfont/iconright-circle' data-hasstudied='{{opt.hasStudy}}' data-chaindex="{{index}}" data-secindex="{{inx}}" bindtap='openLesson'></icon>
+        </view>
+      </block>
+    </view>
+  </block>
+</view>

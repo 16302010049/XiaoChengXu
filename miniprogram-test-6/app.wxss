@@ -1,0 +1,44 @@
+/**app.wxss**/
+@import "weui.wxss";
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1559220029403'); /* IE9 */
+  src: url('iconfont.eot?t=1559220029403#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAOgAAsAAAAACKQAAANSAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDMgqELIQTATYCJAMUCwwABCAFhG0HXxu2B8gekiSIQAEFFCgAwIjj4WsNfX9v74KkEgUo43k8sGIUJopU2NZ1fIWq0RUKjcifOv2XMk69qjAigCM7CsknKzSVaEIYRoTb+wkngglwowA+OJb6kfhgef4B+ioZTUEJlPRAb5mrwNHINpEJ+hbYOdTBBH1MoF6fKKq5kqomcJFJ5wJxRqR+cPHp5RRSqFVVMQ9m8QKOatOT3R0Az+bvx39ICBeSsiBdnT8oVkPeb92ncfuh/0O6dAQI6rPi9hgFxoFM3MTaz9jb8XH26j+7HUwB9Wolqa5Zg59GP43//48rHpGyXv6HRxaSgqhIxY1gihKZ3zqV7yoGUStQMYpaCRXjmFBgve6gHu3AdxCUhH5TXsiBug4PD0WVpYpbt5mAppZlN+OFi4HNS7PBrSvLHU+eND192vz8eeuzZ1aStlhc794nT5SW5UWAu67mJpZ+ZuNoWGtZrtG7uOTuXpmsmYdZCeqhap3KzXGDqn5LRQZyG7krWVa0rhG5kfnjX6zPpmZO3rbpE+uYGrn/28/FT2OMTD1punb488dBci1yUexWuL+L3bJ/+NAeJVvMRTHvhPX73/v5imOsz81cXdIbYU2Vgt/7YS5bl7U4nHrCO9Dm2K+xBpyFVGIJ3Xwt6Wp3NOQrlWxpaynKqE2MrZW9wi1gBfiyl3vLM/9ChaDjW9ZCr3fWbxf3DH4FfssG35cD5OcfXYWP4DIQ5GzJX5FkKPO7UeW/C0tjXNmYwiNed/Dd7V7Wo+zKXUyo1eVCUqMXCrX6kRk7DqUGE1CpNQn1xpQ+3qADYy9yHUaNA4RWu5A0+wmFVneRGfsCSt0+Q6U17KHeavi/sMFgELdChvs5VqMBGyICNYqKibtZpQ1YMun7mVdkklswU0gIxcfEBVOl2IhZHTcUs5TAuYhERg2oBD6H9XqKZEa1WOAxGs7ljNhYMe6bYgRqADezGKwfh6khA2wQQkAZiXp/zi308w0wiYleP5bS9MPeAmMUZHokXoy4HMhSuTFX077sVphJEnCcyKdEDGWAlKAV08txCpHjD2lhAi6GpkRUliGWOol55THtKw3beALqSV8sI0UROcqoNOxRizFaIEzQYw9GJA33uFxNcpRF6tfrtcwWbSbYAgAAAA==') format('woff2'),
+  url('iconfont.woff?t=1559220029403') format('woff'),
+  url('iconfont.ttf?t=1559220029403') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1559220029403#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icondown-circle:before {
+  content: "\e77f";
+}
+
+.iconright-circle:before {
+  content: "\e783";
+}
+
+.iconup-circle:before {
+  content: "\e785";
+}
+
+.icongallery-view:before {
+  content: "\e76b";
+}

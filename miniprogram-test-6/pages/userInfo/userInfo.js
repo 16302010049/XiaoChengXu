@@ -99,47 +99,7 @@ Page({
 
   },
   onLoad: function(options) {
-    let uid = wx.getStorageSync('userID');
-    var that = this;
-    wx.request({
-      url: 'http://localhost:8080/student?signature=' + wx.getStorageSync('openid'),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      success: function(res) {
-        that.setData({
-          userInfo: res.data,
-          userSex: res.data.sex,
-        })
-        if (res.data.sex == '男') {
-          that.setData({
-            sex: [{
-                name: '0',
-                value: '男',
-                checked: 'false'
-              },
-              {
-                name: '1',
-                value: '女',
-              }
-            ],
-          })
-        } else {
-          that.setData({
-            sex: [{
-                name: '0',
-                value: '男',
-                checked: 'false'
-              },
-              {
-                name: '1',
-                value: '女',
-              }
-            ],
-          })
-        }
-      }
-    })
+    
   },
 
   uuid: function() {
@@ -155,4 +115,54 @@ Page({
     var uuid = s.join("");
     return uuid;
   },
+
+  /**
+  * 生命周期函数--监听页面显示
+  */
+  onShow: function () {
+    let uid = wx.getStorageSync('userID');
+    var that = this;
+    wx.request({
+      url: 'http://localhost:8080/student?signature=' + wx.getStorageSync('openid'),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        that.setData({
+          userInfo: res.data,
+          userSex: res.data.sex,
+        })
+        if (res.data.sex == '男') {
+          that.setData({
+            sex: [{
+              name: '0',
+              value: '男',
+              checked: true
+            },
+            {
+              name: '1',
+              value: '女',
+              checked: false
+            }
+            ],
+          })
+        } else {
+          that.setData({
+            sex: [{
+              name: '0',
+              value: '男',
+              checked: false
+            },
+            {
+              name: '1',
+              value: '女',
+              checked: true
+            }
+            ],
+          })
+        }
+      }
+    })
+  }
 })
+

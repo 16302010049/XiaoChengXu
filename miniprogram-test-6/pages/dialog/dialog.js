@@ -21,7 +21,7 @@ function initData(that) {
     {
       speaker: 'customer',
       contentType: 'text',
-      content: '我是学生哦'
+      content: '我是学生'
     }
   ]
   that.setData({
@@ -57,15 +57,11 @@ Page({
     this.setData({
       cusHeadIcon: app.globalData.userInfo.avatarUrl,
     });
+    this.data.update = wx.getStorageSync('has');
+    this.setData({
+      update:this.data.update
+    });
      var that = this;
-    // for (let i = 0; i < lesson.chapters.length; i++) {
-    //   for(let j=0;j<lesson.chapters[i].section.length;j++){
-    //     that.data.sumsection++
-    //   }
-    // }
-    // that.setData({
-    //   sumsection:that.data.sumsection
-    // })
     wx.getStorage({
       key: 'lesson',
       success: function(res) {
@@ -256,10 +252,15 @@ Page({
    * 发送点击监听
    */
   updatepro:function(){
+    var temp = 0;
+    for (var i = 0; i < this.data.lesson.chapters.length;i++){
+      temp+=this.data.lesson.chapters[i].section.length;
+    }
     var updatepro = {
       course_id: this.data.lesson.id,
       student_id: wx.getStorageSync('uid'),
-      section: this.data.lesson.chapters[this.data.ChaIndex].section[this.data.SecIndex].sectionname
+      section: this.data.lesson.chapters[this.data.ChaIndex].section[this.data.SecIndex].sectionname,
+      total:temp
     }
     console.log(updatepro)
     wx.request({
