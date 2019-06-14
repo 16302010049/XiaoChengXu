@@ -72,7 +72,7 @@ Page({
       studentnumber:this.data.information.idNumber
     }
     wx.request({
-      url: 'http://localhost:8080/addstu',
+      url: 'http://52.91.208.255:8080/addstu',
       method: 'Post',
       data: newStudent,
       headers: {
@@ -80,7 +80,7 @@ Page({
       },
       success: function (res) {
         wx.request({
-          url: 'http://localhost:8080/student?signature=' + wx.getStorageSync('openid'),
+          url: 'http://52.91.208.255:8080/student?signature=' + wx.getStorageSync('openid'),
           headers: {
         'Content-Type': 'json'
       },

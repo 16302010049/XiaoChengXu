@@ -63,7 +63,7 @@ Page({
       studysection: ''
     }
     wx.request({
-      url: 'http://localhost:8080/course/addcourse',
+      url: 'http://52.91.208.255:8080/course/addcourse',
       method: 'post',
       data: temp,
       headers: {
@@ -108,7 +108,7 @@ Page({
     //把this对象复制到临时变量that
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/course/getallcourses',
+      url: 'http://52.91.208.255:8080/course/getallcourses',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -119,7 +119,7 @@ Page({
         })
         //let uid = wx.getStorageSync('userID');
         wx.request({
-          url: 'http://localhost:8080/course/getcoursebyid?id=' + wx.getStorageSync('uid'),
+          url: 'http://52.91.208.255:8080/course/getcoursebyid?id=' + wx.getStorageSync('uid'),
           headers: {
             'Content-Type': 'application/json'
           },

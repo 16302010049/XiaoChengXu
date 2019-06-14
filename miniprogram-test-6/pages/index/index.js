@@ -15,7 +15,7 @@ Page({
     let userList = [];
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/student?signature='+wx.getStorageSync('openid'),
+      url: 'http://52.91.208.255:8080/student?signature='+wx.getStorageSync('openid'),
       headers: {
         'Content-Type': 'json'
       },

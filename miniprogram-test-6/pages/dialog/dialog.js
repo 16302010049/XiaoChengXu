@@ -264,7 +264,7 @@ Page({
     }
     console.log(updatepro)
     wx.request({
-      url: 'http://localhost:8080/course/updatepro',
+      url: 'http://52.91.208.255:8080/course/updatepro',
       method: "put",
       data: updatepro,
       headers: {
@@ -297,7 +297,7 @@ Page({
           choice: e.detail.value
         }
         wx.request({
-          url: 'http://localhost:8080/course/addanswerrecord',
+          url: 'http://52.91.208.255:8080/course/addanswerrecord',
           method: 'Post',
           data: record,
           headers: {
@@ -360,7 +360,7 @@ Page({
         }
         //stu.collect.push(qa);
         wx.request({
-          url: 'http://localhost:8080/course/addcollection',
+          url: 'http://52.91.208.255:8080/course/addcollection',
           method:'Post',
           data:qa,
           headers: {

@@ -79,7 +79,7 @@ Page({
     that.data.userInfo.studentnumber = this.data.information.idNumber
     console.log(that.data.userInfo.studentnumber)
     wx.request({
-      url: 'http://localhost:8080/updatestuinfo' ,
+      url: 'http://52.91.208.255:8080/updatestuinfo' ,
       method: 'Put',
       data: that.data.userInfo,
       headers: {
@@ -123,7 +123,7 @@ Page({
     let uid = wx.getStorageSync('userID');
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/student?signature=' + wx.getStorageSync('openid'),
+      url: 'http://52.91.208.255:8080/student?signature=' + wx.getStorageSync('openid'),
       headers: {
         'Content-Type': 'application/json'
       },

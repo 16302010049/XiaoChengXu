@@ -30,7 +30,7 @@ Page({
     }
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/course/deleteCourse',
+      url: 'http://52.91.208.255:8080/course/deleteCourse',
       method:'Post',
       data:req,
       headers: {
@@ -75,7 +75,7 @@ Page({
     var that = this;
     let uid = wx.getStorageSync('uid');
     wx.request({
-      url: 'http://localhost:8080/course/getmycourse?stuid=' + uid,
+      url: 'http://52.91.208.255:8080/course/getmycourse?stuid=' + uid,
       headers: {
         'Content-Type': 'application/json'
       },

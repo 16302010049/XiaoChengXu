@@ -28,7 +28,7 @@ Page({
     this.data.collect[id].note = this.data.note;
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/course/updatecollect',
+      url: 'http://52.91.208.255:8080/course/updatecollect',
       method: 'Put',
       data: that.data.collect[id],
       headers: {
@@ -57,7 +57,7 @@ Page({
    
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/course/deletecollect?id='+that.data.collect[id].id,
+      url: 'http://52.91.208.255:8080/course/deletecollect?id='+that.data.collect[id].id,
       method: 'Delete',
       headers: {
         'Content-Type': 'application/json'
@@ -94,7 +94,7 @@ Page({
     let uid = wx.getStorageSync('uid');
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/course/getcollect?stu_id=' + uid,
+      url: 'http://52.91.208.255:8080/course/getcollect?stu_id=' + uid,
       headers: {
         'Content-Type': 'application/json'
       },

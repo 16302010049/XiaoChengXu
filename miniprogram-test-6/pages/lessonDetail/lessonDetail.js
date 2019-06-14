@@ -62,7 +62,7 @@ Page({
       student_id: wx.getStorageSync('uid')
     }
     wx.request({
-      url: 'http://localhost:8080/course/getStudySection',
+      url: 'http://52.91.208.255:8080/course/getStudySection',
       method: 'Post',
       data: requ,
       headers: {
